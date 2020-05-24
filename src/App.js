@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import DisplayProfile from './components/displayProfile/DisplayProfile'
 import './App.css';
+import Button from 'react-bootstrap/Button';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      user: {},
+      active: false,
+    }
+  } 
+
+handleToggle = () => {  
+  fetch("https://api.github.com/users/octocat")
+  .then((response) => response.json())
+    .then((response) => {
+      this.setState((state) => {
+        return {
+          ...state,
+          user: response,
+          active: !state.active 
+        }                             
+      })      
+    })      
+}
+  render() {
+    return (
+      <div className="App">
+        <DisplayProfile 
+          user = {this.state.user}
+          active = {this.state.active} 
+          button = {this.handleToggle}
+        />
+        <Button onClick = {this.handleToggle}>View/Hide Github Profile!</Button>
+       
+      </div>
+    );
+  }
 }
 
 export default App;
