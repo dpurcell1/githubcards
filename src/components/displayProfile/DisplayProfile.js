@@ -12,11 +12,11 @@ class DisplayProfile extends Component {
             style = {{ width: '18rem' }}
           >            
             <Card.Img 
-                variant = {"top"}
+                variant = "top"
                 src = {this.props.user.avatar_url}
             />
             <ListGroup>               
-                    <ListGroup.Item>Name: {this.props.user.name}</ListGroup.Item>
+                    <ListGroup.Item>Name: <a href='https://github.com/dpurcell1'>{this.props.user.name}</a></ListGroup.Item>
                     <ListGroup.Item>Followers: {this.props.user.followers}</ListGroup.Item>
                     <ListGroup.Item>Location: {this.props.user.location}</ListGroup.Item>                
             </ListGroup>            

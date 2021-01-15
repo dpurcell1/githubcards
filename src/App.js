@@ -14,7 +14,7 @@ class App extends Component {
   } 
 
 handleToggle = () => {  
-  fetch("https://api.github.com/users/octocat")
+  fetch("https://api.github.com/users/dpurcell1")
   .then((response) => response.json())
     .then((response) => {
       this.setState((state) => {
@@ -31,8 +31,7 @@ handleToggle = () => {
       <div className="App">
         <DisplayProfile 
           user = {this.state.user}
-          active = {this.state.active} 
-          button = {this.handleToggle}
+          active = {this.state.active}           
         />
         <Button onClick = {this.handleToggle}>View/Hide Github Profile!</Button>
        
